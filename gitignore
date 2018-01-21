@@ -1,0 +1,11 @@
+# Mac OS X hidden file
+.DS_Store
+
+# Editors
+*~
+*.pyc
+.idea
+
+# common virtualenv
+.venv
+venv

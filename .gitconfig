@@ -1,0 +1,18 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Peter Tripp
+	email = petertripp@gmail.com
+	signingkey = 80E86086
+[push]
+	default = simple
+[core]
+	excludesfile = /Users/peter/.gitignore
+	editor = emacs
+[gpg]
+	program = /usr/local/bin/gpg
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Users/peter/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

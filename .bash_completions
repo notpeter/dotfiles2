@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
+source /usr/local/etc/bash_completion.d/aws_bash_completer 

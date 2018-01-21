@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+export GOPATH="${HOME}/.go"
+
+# Homebrew adds /usr/local/bin but not sbin                                                                                                                                                                                                 export PATH="$PATH:/usr/local/sbin"
