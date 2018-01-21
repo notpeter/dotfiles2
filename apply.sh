@@ -2,11 +2,7 @@
 
 set -o nounset -o pipefail -o errexit
 
-directories=( ".emacs.d" )
-for dirname in "${directories[@]}"
-do
-    mkdir -p "~/${dirname}"
-done
+mkdir -p ~/.emacs.d/
 
 files=( 
     ".bash_aliases"
@@ -16,14 +12,15 @@ files=(
     ".bash_paths"
     ".bash_profile"
     ".bash_prompt"
-    ".emacs.d/init.el"
     ".gitconfig"
+    ".emacs.d/init.el"
 )
 
 for filename in "${files[@]}"
 do
-    rm -f "~/${filename}"
-    cp "${filename}" ~/
+    rm -f ~/"${filename}"
+    ln -s ~/.dotfiles/"${filename}" ~/"${filename}"
 done
 
-cp gitignore ~/.gitignore
+rm ~/.gitignore
+ln -s ~/.dotfiles/.gitignore ~/

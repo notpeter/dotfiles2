@@ -16,4 +16,4 @@ shopt -s histappend
 shopt -s cdspell
 
 # Make xhost less secure.
-xhost + 127.0.0.1 > /dev/null
+#xhost + 127.0.0.1 > /dev/null
