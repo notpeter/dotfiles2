@@ -6,7 +6,7 @@
 [push]
 	default = simple
 [core]
-	excludesfile = /Users/peter/.gitignore
+	excludesfile = /Users/peter/.gitignore-global
 	editor = emacs
 [gpg]
 	program = /usr/local/bin/gpg

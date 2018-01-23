@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Shell prompt based on the Solarized Dark theme.
 # Screenshot: http://i.imgur.com/EkEtphC.png
 # Heavily inspired by @necolas’s prompt: https://github.com/necolas/dotfiles
@@ -17,20 +17,17 @@ prompt_git() {
 
     # Check if the current directory is in a Git repository.
     if [ "$(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}")" == '0' ]; then
-        # Get the short symbolic ref.
-        # If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
-        # Otherwise, just give up.
+        # Get the short symbolic ref. If HEAD isn’t a symbolic ref,
+        # get the short SHA for the latest otherwise, just give up.
         branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
             git rev-parse --short HEAD 2> /dev/null || \
             echo '(unknown)')";
-
-        echo -e "${1}(${branchName})";
+        echo -e "(${branchName})";
     else
         return;
     fi;
 }
 
-ugly_red="\\e[101m"
 if tput setaf 1 &> /dev/null; then
     tput sgr0; # reset colors
     bold=$(tput bold);
@@ -70,12 +67,12 @@ PS1="\\[\\033]0;\\w\\007\\]";
 # PS1+="\\[${blue}\\]\\h"; # host
 # PS1+="\\[${white}\\]:";       # :
 PS1+="\\[${green}\\]\\w ";     # working directory
-PS1+="\$(prompt_git \"${red}\")"; # Git repository details
+PS1+="\\[${red}\\]$(prompt_git)"; # Git repository details
 PS1+="\\[${violet}\\] \$ \\[${reset}\\]"; # `$` (and reset color)
 export PS1;
 
 SUDO_PS1="\\[\\033]0;\\w\\007\\]";
-SUDO_PS1="\\[${ugly_red}\\]\\u\\[${reset}\\] "
+SUDO_PS1="\\[${red}\\]\\u\\[${reset}\\] "
 SUDO_PS1+="\\[${green}\\]\\w ";     # working directory
 SUDO_PS1+="\\[${tailStyle}\\]# \\[${reset}\\]"; # `$` (and reset color)
 export SUDO_PS1;

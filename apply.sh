@@ -13,14 +13,13 @@ files=(
     ".bash_profile"
     ".bash_prompt"
     ".gitconfig"
+    ".gitignore-global"
     ".emacs.d/init.el"
 )
 
 for filename in "${files[@]}"
 do
-    rm -f ~/"${filename}"
-    ln -s ~/.dotfiles/"${filename}" ~/"${filename}"
+    ln -nsf ~/.dotfiles/"${filename}" ~/"${filename}"
 done
 
-rm ~/.gitignore
-ln -s ~/.dotfiles/.gitignore ~/
+source ~/.bash_profile
